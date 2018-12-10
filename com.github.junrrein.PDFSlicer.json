@@ -45,8 +45,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.0.tar.xz",
-                    "sha256": "f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.1.tar.xz",
+                    "sha256": "c9a25f26178c6cbb147f9904d8c533b5a5c5111a41ac2eb781eb734eea446003"
                 }
             ]
         },
@@ -58,8 +58,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.56/glibmm-2.56.0.tar.xz",
-                    "sha256": "6e74fcba0d245451c58fc8a196e9d103789bc510e1eee1a9b1e816c5209e79a9"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.58/glibmm-2.58.0.tar.xz",
+                    "sha256": "d34189237b99e88228e6f557f7d6e62f767fe356f395a244f5ad0e486254b645"
                 }
             ]
         },
@@ -136,7 +136,8 @@
             "name": "poppler",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release",
+                "-DCMAKE_INSTALL_LIBDIR=/app/lib",
+                "-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
                 "-DENABLE_LIBOPENJPEG=none"
             ],
             "cleanup": [
@@ -145,8 +146,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.71.0.tar.xz",
-                    "sha256": "badbecd2dddf63352fd85ec08a9c2ed122fdadacf2a34fcb4cc227c4d01f2cf9"
+                    "url": "https://poppler.freedesktop.org/poppler-0.72.0.tar.xz",
+                    "sha256": "c1747eb8f26e9e753c4001ed951db2896edc1021b6d0f547a0bd2a27c30ada51"
                 }
             ]
         },
@@ -164,7 +165,7 @@
                     "url": "https://github.com/junrrein/pdfslicer.git",
                     "tag": "v1.3.1",
                     "commit": "14136664996a1e4cf945e75b6ea17ed2f7c50ecb",
-                    "disable-fsckobjects" : true
+                    "disable-fsckobjects": true
                 }
             ]
         }
