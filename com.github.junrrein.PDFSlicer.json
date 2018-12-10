@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.28",
+    "runtime-version": "3.30",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
@@ -113,8 +113,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.22/gtkmm-3.22.2.tar.xz",
-                    "sha256": "91afd98a31519536f5f397c2d79696e3d53143b80b75778521ca7b48cb280090"
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.22/gtkmm-3.22.3.tar.xz",
+                    "sha256": "178c2728a4f37eae986eabdd758547cd7579d15000048596fa6bbc25cbba5c90"
                 }
             ]
         },
@@ -127,8 +127,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://poppler.freedesktop.org/poppler-data-0.4.8.tar.gz",
-                    "sha256": "1096a18161f263cccdc6d8a2eb5548c41ff8fcf9a3609243f1b6296abdf72872"
+                    "url": "http://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz",
+                    "sha256": "1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012"
                 }
             ]
         },
@@ -145,8 +145,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.63.0.tar.xz",
-                    "sha256": "27cc8addafc791e1a26ce6acc2b490926ea73a4f89196dd8a7742cff7cf8a111"
+                    "url": "https://poppler.freedesktop.org/poppler-0.71.0.tar.xz",
+                    "sha256": "badbecd2dddf63352fd85ec08a9c2ed122fdadacf2a34fcb4cc227c4d01f2cf9"
                 }
             ]
         },
