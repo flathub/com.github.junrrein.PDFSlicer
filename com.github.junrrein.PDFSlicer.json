@@ -175,9 +175,9 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/junrrein/qpdf-fix-pkgconfig.git",
-                    "tag": "release-qpdf-8.4.0-junrrein",
-                    "commit": "14454b4e4d65bd84ca8a09b0ee7c05fa5ae04666"
+                    "url": "https://github.com/qpdf/qpdf.git",
+                    "tag": "release-qpdf-8.4.0",
+                    "commit": "cb47c515189f2d0ed0f1ef0fddd57c486d5b6372"
                 }
             ]
         },
@@ -188,8 +188,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.6.0",
-                    "commit": "6558ae53addb5ebba66de05909f2cbab58cd6724",
+                    "tag": "v1.6.1",
+                    "commit": "49eb443a4d0401a39ef71fa8048c09ab8ad22cea",
                     "disable-fsckobjects": true
                 }
             ]
