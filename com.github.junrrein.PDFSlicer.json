@@ -168,18 +168,28 @@
             ]
         },
         {
-            "name": "pdfslicer",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DUSE_BUNDLED=FALSE",
-                "-DFLATPAK=TRUE"
+            "name": "qpdf",
+            "cleanup": [
+                "/bin"
             ],
             "sources": [
                 {
                     "type": "git",
+                    "url": "https://github.com/junrrein/qpdf-fix-pkgconfig.git",
+                    "tag": "release-qpdf-8.4.0-junrrein",
+                    "commit": "14454b4e4d65bd84ca8a09b0ee7c05fa5ae04666"
+                }
+            ]
+        },
+        {
+            "name": "pdfslicer",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                {
+                    "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.5.5",
-                    "commit": "7d4ca74b3e84de792c02b29721714209eda05aa8",
+                    "tag": "v1.6.0",
+                    "commit": "6558ae53addb5ebba66de05909f2cbab58cd6724",
                     "disable-fsckobjects": true
                 }
             ]
