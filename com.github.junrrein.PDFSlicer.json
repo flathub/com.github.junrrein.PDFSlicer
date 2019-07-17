@@ -188,8 +188,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.7.2",
-                    "commit": "c5ea660a9adb01088d37e0993c237a17e0172437",
+                    "tag": "v1.7.3",
+                    "commit": "ca7f9b6488f306fd8c04120417e9660724ddc753",
                     "disable-fsckobjects": true
                 }
             ]
