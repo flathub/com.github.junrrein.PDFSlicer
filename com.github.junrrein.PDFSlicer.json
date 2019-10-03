@@ -192,6 +192,12 @@
                     "tag": "v1.7.2",
                     "commit": "c5ea660a9adb01088d37e0993c237a17e0172437",
                     "disable-fsckobjects": true
+                },
+                {
+                    "type" : "shell",
+                    "commands" : [
+                        "git submodule init"
+                    ]
                 }
             ]
         }
