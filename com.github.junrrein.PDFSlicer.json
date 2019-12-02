@@ -1,10 +1,11 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.32",
+    "runtime-version": "3.34",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
+        "--filesystem=host",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland"
@@ -24,146 +25,18 @@
         "*.a"
     ],
     "modules": [
+        "gtkmm.json",
+        "poppler.json",
         {
-            "name": "mm-common",
+            "name": "intltool",
             "cleanup": [
-                "/"
+                "*"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/mm-common/0.9/mm-common-0.9.12.tar.xz",
-                    "sha256": "ceffdcce1e5b52742884c233ec604bf6fded12eea9da077ce7a62c02c87e7c0b"
-                }
-            ]
-        },
-        {
-            "name": "sigc++",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.1.tar.xz",
-                    "sha256": "c9a25f26178c6cbb147f9904d8c533b5a5c5111a41ac2eb781eb734eea446003"
-                }
-            ]
-        },
-        {
-            "name": "glibmm",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/glibmm/2.58/glibmm-2.58.0.tar.xz",
-                    "sha256": "d34189237b99e88228e6f557f7d6e62f767fe356f395a244f5ad0e486254b645"
-                }
-            ]
-        },
-        {
-            "name": "cairomm",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.cairographics.org/releases/cairomm-1.12.2.tar.gz",
-                    "sha1": "621546f32221a2ddc079167a13ce5b5409bed704"
-                }
-            ]
-        },
-        {
-            "name": "pangomm",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pangomm/2.40/pangomm-2.40.1.tar.xz",
-                    "sha256": "9762ee2a2d5781be6797448d4dd2383ce14907159b30bc12bf6b08e7227be3af"
-                }
-            ]
-        },
-        {
-            "name": "atkmm",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.24/atkmm-2.24.2.tar.xz",
-                    "sha256": "ff95385759e2af23828d4056356f25376cfabc41e690ac1df055371537e458bd"
-                }
-            ]
-        },
-        {
-            "name": "gtkmm",
-            "config-opts": [
-                "--disable-documentation"
-            ],
-            "build-options": {
-                "cxxflags": "-O2 -g -std=c++11"
-            },
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gtkmm/3.22/gtkmm-3.22.3.tar.xz",
-                    "sha256": "178c2728a4f37eae986eabdd758547cd7579d15000048596fa6bbc25cbba5c90"
-                }
-            ]
-        },
-        {
-            "name": "openjpeg",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DBUILD_CODEC=OFF"
-            ],
-            "cleanup": [
-                "/lib/openjpeg-2.3"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/uclouvain/openjpeg/archive/v2.3.0.tar.gz",
-                    "sha256": "3dc787c1bb6023ba846c2a0d9b1f6e179f1cd255172bde9eb75b01f1e6c7d71a"
-                }
-            ]
-        },
-        {
-            "name": "popplerdata",
-            "no-autogen": true,
-            "make-install-args": [
-                "prefix=/app"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz",
-                    "sha256": "1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012"
-                }
-            ]
-        },
-        {
-            "name": "poppler",
-            "buildsystem": "cmake-ninja",
-            "config-opts": [
-                "-DCMAKE_INSTALL_LIBDIR=/app/lib",
-                "-DCMAKE_INSTALL_INCLUDEDIR=/app/include"
-            ],
-            "cleanup": [
-                "/bin"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://poppler.freedesktop.org/poppler-0.72.0.tar.xz",
-                    "sha256": "c1747eb8f26e9e753c4001ed951db2896edc1021b6d0f547a0bd2a27c30ada51"
+                    "url": "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz",
+                    "sha256": "67c74d94196b153b774ab9f89b2fa6c6ba79352407037c8c14d5aeb334e959cd"
                 }
             ]
         },
@@ -176,8 +49,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qpdf/qpdf.git",
-                    "tag": "release-qpdf-8.4.0",
-                    "commit": "cb47c515189f2d0ed0f1ef0fddd57c486d5b6372"
+                    "tag": "release-qpdf-9.0.1",
+                    "commit": "bcfb0c7d9a8c7e50f96db440184b2ce00cbc144d"
                 }
             ]
         },
@@ -188,9 +61,9 @@
                 {
                     "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.7.2",
-                    "commit": "c5ea660a9adb01088d37e0993c237a17e0172437",
-                    "disable-fsckobjects": true
+                    "tag": "v1.7.5",
+                    "commit": "28f1e81c5ed88444f2a85e0dd24e20a4185e98b3",
+                    "disable-shallow-clone": true
                 }
             ]
         }
