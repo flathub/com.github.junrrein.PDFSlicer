@@ -61,8 +61,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/junrrein/pdfslicer.git",
-                    "tag": "v1.7.6",
-                    "commit": "9e91ad99b40663755fd9710113d371bbeb0d3767",
+                    "tag": "v1.8.0",
+                    "commit": "8590ca05a908552c80787ef62e81ee8a65d53f07",
                     "disable-shallow-clone": true
                 }
             ]
