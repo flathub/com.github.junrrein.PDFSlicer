@@ -6,6 +6,7 @@
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
+        "--filesystem=xdg-run/gvfs",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland"
