@@ -6,10 +6,11 @@
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
-        "--filesystem=xdg-run/gvfs",
         "--share=ipc",
         "--socket=x11",
-        "--socket=wayland"
+        "--socket=wayland",
+        "--talk-name=org.gtk.vfs",
+        "--talk-name=org.gtk.vfs.*"
     ],
     "cleanup": [
         "/bin/mm-common-prepare",
