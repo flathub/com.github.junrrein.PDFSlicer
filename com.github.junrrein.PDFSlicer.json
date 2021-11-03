@@ -1,11 +1,12 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.38",
+    "runtime-version": "41",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
+        "--filesystem=xdg-run/gvfsd",
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
