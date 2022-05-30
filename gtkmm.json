@@ -52,14 +52,15 @@
 		},
 		{
 			"name": "pangomm",
+			"buildsystem": "meson",
 			"config-opts": [
-				"--disable-documentation"
+				"-Dbuild-documentation=false"
 			],
 			"sources": [
 				{
 					"type": "archive",
-					"url": "https://download.gnome.org/sources/pangomm/2.42/pangomm-2.42.1.tar.xz",
-					"sha256": "14bf04939930870d5cfa96860ed953ad2ce07c3fd8713add4a1bfe585589f40f"
+					"url": "https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.2.tar.xz",
+					"sha256": "57442ab4dc043877bfe3839915731ab2d693fc6634a71614422fb530c9eaa6f4"
 				}
 			]
 		},
