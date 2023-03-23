@@ -1,14 +1,14 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "42",
+    "runtime-version": "44",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
         "--filesystem=xdg-run/gvfsd",
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--socket=wayland",
         "--talk-name=org.gtk.vfs.*"
     ],
@@ -54,6 +54,10 @@
                     "tag": "v1.8.8",
                     "commit": "c843e4b5bff170d920aaf36debd454d11ac6e03b",
                     "disable-shallow-clone": true
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/pdfslicer-catch2.patch"
                 }
             ]
         }
