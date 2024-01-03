@@ -1,0 +1,28 @@
+From e92cfbbe37a506445f6382f5967f64a832a8487a Mon Sep 17 00:00:00 2001
+From: Jason Merrill <jason@redhat.com>
+Date: Sun, 1 May 2022 17:08:37 -0400
+Subject: [PATCH] Fix name meaning change in nested class
+
+C++20 [basic.scope.class]: A name N used in a class S shall refer to the
+same declaration in its context and when re-evaluated in the completed scope
+of S. No diagnostic is required for a violation of this rule.
+
+This rule is violated by the unqualified use of meta::invoke followed by the
+declaration of partition_<Fn>::invoke.
+---
+ include/meta/meta.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/third-party/range-v3/include/meta/meta.hpp b/third-party/range-v3/include/meta/meta.hpp
+index c87e103f82..7a69bef562 100644
+--- a/third-party/range-v3/include/meta/meta.hpp
++++ b/third-party/range-v3/include/meta/meta.hpp
+@@ -3189,7 +3189,7 @@ namespace meta
+                         void_<bool_<invoke<Fn, A>::type::value>>>
+ #endif
+             {
+-                using type = if_<invoke<Fn, A>, pair<list<Yes..., A>, list<No...>>,
++                using type = if_<meta::invoke<Fn, A>, pair<list<Yes..., A>, list<No...>>,
+                                     pair<list<Yes...>, list<No..., A>>>;
+             };
+ 
