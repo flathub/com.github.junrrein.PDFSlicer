@@ -57,7 +57,10 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/pdfslicer-catch2.patch"
+                    "paths": [
+		        "patches/pdfslicer-catch2.patch",
+		        "patches/pdfslicer-range.patch"
+		    ]
                 }
             ]
         }
