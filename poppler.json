@@ -22,6 +22,8 @@
         "-DCMAKE_INSTALL_LIBDIR=/app/lib",
         "-DCMAKE_INSTALL_INCLUDEDIR=/app/include",
         "-DENABLE_UTILS=OFF",
+        "-DENABLE_QT5=OFF",
+        "-DENABLE_QT6=OFF",
         "-DENABLE_GLIB=OFF"
     ],
     "cleanup": [
