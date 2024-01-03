@@ -46,7 +46,7 @@
 				{
 					"type": "archive",
 					"url": "https://www.cairographics.org/releases/cairomm-1.14.2.tar.xz",
-					"sha1": "8c823f5294724d8c96704786f947cd19b9dfd761"
+					"sha256": "0126b9cc295dc36bc9c0860d5b720cb5469fd78d5620c8f10cc5f0c07b928de3"
 				}
 			]
 		},
