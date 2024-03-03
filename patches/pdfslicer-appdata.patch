@@ -1,0 +1,19 @@
+diff --git a/data/com.github.junrrein.PDFSlicer.appdata.xml.in b/data/com.github.junrrein.PDFSlicer.appdata.xml.in
+index bf9b7bb..8478493 100644
+--- a/data/com.github.junrrein.PDFSlicer.appdata.xml.in
++++ b/data/com.github.junrrein.PDFSlicer.appdata.xml.in
+@@ -301,13 +301,7 @@
+ 				<p>Minor bug fixes and changes:</p>
+ 				<ul>
+ 					<li>Changed the application id</li>
+-					<li>Switched to Gtk::FileChooserNative. This has 2 benefits:</li>
+-					<li>
+-						<ul>
+-							<li>Native file dialogs are used on Windows,</li>
+-							<li>It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem</li>
+-						</ul>
+-					</li>
++					<li>Switched to Gtk::FileChooserNative. It allows the application to cross the Flatpak sandbox boundary, without having permissions to read/write files on the filesystem</li>
+ 					<li>Improved the AppStream metadata</li>
+ 				</ul>
+ 			</description>
