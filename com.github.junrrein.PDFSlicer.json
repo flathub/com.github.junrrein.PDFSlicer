@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "47",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
@@ -47,6 +47,9 @@
         {
             "name": "pdfslicer",
             "buildsystem": "cmake-ninja",
+            "config-opts": [
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+            ],
             "sources": [
                 {
                     "type": "git",
