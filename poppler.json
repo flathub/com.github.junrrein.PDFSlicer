@@ -32,8 +32,8 @@
     "sources": [
         {
             "type": "archive",
-            "url": "https://poppler.freedesktop.org/poppler-24.11.0.tar.xz",
-            "sha256": "7723d880565211740c13649d24a300257b86ddd7fa2d208187ff7e5cc8dfbd58",
+            "url": "https://poppler.freedesktop.org/poppler-25.11.0.tar.xz",
+            "sha256": "63f155142b77349e2bccaef148e754e7506ab1641e713b83af4f54a8f8b15369",
             "x-checker-data": {
                 "is-important": true,
                 "type": "anitya",
