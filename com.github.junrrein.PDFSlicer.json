@@ -1,7 +1,7 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "49",
+    "runtime-version": "50",
     "sdk": "org.gnome.Sdk",
     "command": "pdfslicer",
     "finish-args": [
@@ -13,16 +13,12 @@
         "--talk-name=org.gtk.vfs.*"
     ],
     "cleanup": [
-        "/bin/mm-common-prepare",
         "/include",
-        "/lib/*/include",
+        "/lib/cmake",
         "/lib/pkgconfig",
-        "/share/pkgconfig",
-        "/share/aclocal",
-        "/man",
+        "/share/doc",
         "/share/man",
-        "/share/info",
-        "/share/gtk-doc",
+        "/share/pkgconfig",
         "*.la",
         "*.a"
     ],
@@ -39,8 +35,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qpdf/qpdf.git",
-                    "tag": "release-qpdf-10.0.4",
-                    "commit": "78b9d6bfd4cbd3e947b1c5ffe73eb97b040e312a"
+                    "tag": "release-qpdf-10.6.3",
+                    "commit": "09a36ad62bfa787642778b8076ae5b4ba4a64fcc",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^release-qpdf-([\\d.]+)$"
+                    }
                 }
             ]
         },
@@ -56,7 +56,11 @@
                     "url": "https://github.com/junrrein/pdfslicer.git",
                     "tag": "v1.8.8",
                     "commit": "c843e4b5bff170d920aaf36debd454d11ac6e03b",
-                    "disable-shallow-clone": true
+                    "disable-shallow-clone": true,
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
                 },
                 {
                     "type": "patch",
@@ -64,7 +68,7 @@
                         "patches/pdfslicer-catch2.patch",
                         "patches/pdfslicer-range.patch",
                         "patches/pdfslicer-appdata.patch"
-		    ]
+                    ]
                 }
             ]
         }
