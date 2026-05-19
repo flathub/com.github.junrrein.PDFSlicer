@@ -1,95 +1,121 @@
 {
-	"modules": [
-		{
-			"name": "mm-common",
-			"cleanup": [
-				"/"
-			],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/GNOME/sources/mm-common/0.9/mm-common-0.9.12.tar.xz",
-					"sha256": "ceffdcce1e5b52742884c233ec604bf6fded12eea9da077ce7a62c02c87e7c0b"
-				}
-			]
-		},
-		{
-			"name": "sigc++",
-			"config-opts": [
-				"--disable-documentation"
-			],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/GNOME/sources/libsigc++/2.10/libsigc++-2.10.2.tar.xz",
-					"sha256": "b1ca0253379596f9c19f070c83d362b12dfd39c0a3ea1dd813e8e21c1a097a98"
-				}
-			]
-		},
-		{
-			"name": "glibmm",
-			"buildsystem": "meson",
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://download.gnome.org/sources/glibmm/2.64/glibmm-2.64.4.tar.xz",
-					"sha256": "405040ab257cef0c8f1b14fdf9f3f92d6e6403715b64f1b75e4b6f04dfb56284"
-				}
-			]
-		},
-		{
-			"name": "cairomm",
-			"config-opts": [
-				"--disable-documentation"
-			],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://www.cairographics.org/releases/cairomm-1.14.2.tar.xz",
-					"sha256": "0126b9cc295dc36bc9c0860d5b720cb5469fd78d5620c8f10cc5f0c07b928de3"
-				}
-			]
-		},
-		{
-			"name": "pangomm",
-			"buildsystem": "meson",
-			"config-opts": [
-				"-Dbuild-documentation=false"
-			],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.2.tar.xz",
-					"sha256": "57442ab4dc043877bfe3839915731ab2d693fc6634a71614422fb530c9eaa6f4"
-				}
-			]
-		},
-		{
-			"name": "atkmm",
-			"config-opts": [
-				"--disable-documentation"
-			],
-			"sources": [
-				{
-					"type": "archive",
-					"url": "http://ftp.gnome.org/pub/GNOME/sources/atkmm/2.28/atkmm-2.28.0.tar.xz",
-					"sha256": "4c4cfc917fd42d3879ce997b463428d6982affa0fb660cafcc0bc2d9afcedd3a"
-				}
-			]
-		}
-	],
-	"name": "gtkmm",
-	"config-opts": [
-		"--disable-documentation"
-	],
-	"build-options": {
-		"cxxflags": "-O2 -g -std=c++11"
-	},
-	"sources": [
-		{
-			"type": "archive",
-			"url": "https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.2.tar.xz",
-			"sha256": "6d71091bcd1863133460d4188d04102810e9123de19706fb656b7bb915b4adc3"
-		}
-	]
+    "name": "gtkmm",
+    "//note": "PDFSlicer require gtkmm-3.0, no need to add checker data",
+    "buildsystem": "meson",
+    "config-opts": [
+        "-Dmaintainer-mode=false",
+        "-Dbuild-documentation=false",
+        "-Dbuild-demos=false",
+        "-Dbuild-tests=false"
+    ],
+    "cleanup": [
+        "/lib/gdkmm-3.0",
+        "/lib/gtkmm-3.0"
+    ],
+    "sources": [
+        {
+            "type": "archive",
+            "url": "https://download.gnome.org/sources/gtkmm/3.24/gtkmm-3.24.10.tar.xz",
+            "sha256": "7ab7e2266808716e26c39924ace1fb46da86c17ef39d989624c42314b32b5a76"
+        }
+    ],
+    "modules": [
+        {
+            "name": "sigc++",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false",
+                "-Dbuild-documentation=false",
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false"
+            ],
+            "cleanup": [
+                "/lib/sigc++-2.0"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libsigc++/2.12/libsigc++-2.12.1.tar.xz",
+                    "sha256": "a9dbee323351d109b7aee074a9cb89ca3e7bcf8ad8edef1851f4cf359bd50843"
+                }
+            ]
+        },
+        {
+            "name": "glibmm",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false",
+                "-Dbuild-documentation=false",
+                "-Dbuild-examples=false"
+            ],
+            "cleanup": [
+                "/lib/glibmm-2.*",
+                "/lib/giomm-2.*",
+                "/lib/libglibmm_generate_extra_defs*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.8.tar.xz",
+                    "sha256": "64f11d3b95a24e2a8d4166ecff518730f79ecc27222ef41faf7c7e0340fc9329"
+                }
+            ]
+        },
+        {
+            "name": "cairomm",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false",
+                "-Dbuild-documentation=false",
+                "-Dbuild-examples=false",
+                "-Dbuild-tests=false"
+            ],
+            "cleanup": [
+                "/lib/cairomm-1.*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.cairographics.org/releases/cairomm-1.14.5.tar.xz",
+                    "sha256": "70136203540c884e89ce1c9edfb6369b9953937f6cd596d97c78c9758a5d48db"
+                }
+            ]
+        },
+        {
+            "name": "pangomm",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false",
+                "-Dbuild-documentation=false"
+            ],
+            "cleanup": [
+                "/lib/pangomm-1.*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.4.tar.xz",
+                    "sha256": "b92016661526424de4b9377f1512f59781f41fb16c9c0267d6133ba1cd68db22"
+                }
+            ]
+        },
+        {
+            "name": "atkmm",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false",
+                "-Dbuild-documentation=false"
+            ],
+            "cleanup": [
+                "/lib/atkmm-1.*"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.4.tar.xz",
+                    "sha256": "0a142a8128f83c001efb8014ee463e9a766054ef84686af953135e04d28fdab3"
+                }
+            ]
+        }
+    ]
 }
