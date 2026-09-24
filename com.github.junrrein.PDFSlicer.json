@@ -1,8 +1,8 @@
 {
     "app-id": "com.github.junrrein.PDFSlicer",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "50",
-    "sdk": "org.gnome.Sdk",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "26.08",
+    "sdk": "org.freedesktop.Sdk",
     "command": "pdfslicer",
     "finish-args": [
         "--filesystem=host",
@@ -28,6 +28,11 @@
         "poppler.json",
         {
             "name": "qpdf",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+            ],
             "cleanup": [
                 "/bin"
             ],
@@ -35,11 +40,11 @@
                 {
                     "type": "git",
                     "url": "https://github.com/qpdf/qpdf.git",
-                    "tag": "release-qpdf-10.6.3",
-                    "commit": "09a36ad62bfa787642778b8076ae5b4ba4a64fcc",
+                    "tag": "v12.4.1",
+                    "commit": "c37f83ae468abb6cc741f43b2f6fdeb66e550ffb",
                     "x-checker-data": {
                         "type": "git",
-                        "tag-pattern": "^release-qpdf-([\\d.]+)$"
+                        "tag-pattern": "^v([\\d.]+)$"
                     }
                 }
             ]
@@ -65,10 +70,18 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "patches/pdfslicer-catch2.patch",
                         "patches/pdfslicer-range.patch",
-                        "patches/pdfslicer-appdata.patch"
+                        "patches/pdfslicer-appdata.patch",
+                        "patches/pdfslicer-prgname.patch",
+                        "patches/pdfslicer-qpdf-11.patch",
+                        "patches/pdfslicer-cxx20.patch"
                     ]
+                },
+                {
+                    "type": "file",
+                    "url": "https://github.com/catchorg/Catch2/releases/download/v2.13.8/catch.hpp",
+                    "sha256": "f5adf6a4c3237920421d51a11112904084043b015acf2c9058e8f36b92ab2921",
+                    "dest": "third-party/catch2/"
                 }
             ]
         }
