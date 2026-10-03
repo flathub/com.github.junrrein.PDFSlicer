@@ -1,0 +1,91 @@
+Subject: Fix bundled third-party headers for C++20 with recent GCC
+Source: Claude AI
+
+poppler-cpp's compile flags make the backend/application targets build with
+-std=c++20, which exposes two incompatibilities in the bundled (2018/2019)
+third-party headers:
+
+* range-v3: "return-type-requirement is not a type-constraint" in the
+  meta::integral concept, and an unparenthesized "requires !x" in the
+  common_view deduction guide. Both are fixed the same way upstream range-v3
+  fixed them.
+* fmt 5.2.1: internal "struct char8_t" clashes with the C++20 char8_t keyword.
+  Renamed to char8_type (as later fmt releases did).
+
+---
+diff --git a/third-party/range-v3/include/meta/meta_fwd.hpp b/third-party/range-v3/include/meta/meta_fwd.hpp
+index a2f5e6f..1717ba3 100644
+--- a/third-party/range-v3/include/meta/meta_fwd.hpp
++++ b/third-party/range-v3/include/meta/meta_fwd.hpp
+@@ -340,7 +340,7 @@ namespace meta
+         typename detail::require_constant<decltype(T{}()), T{}()>;
+         requires T{}() == T::value;
+ 
+-        { T{} } -> typename T::value_type;
++        // { T{} } -> typename T::value_type;
+     };
+     // clang-format on
+ #endif // META_CONCEPT
+diff --git a/third-party/range-v3/include/range/v3/view/common.hpp b/third-party/range-v3/include/range/v3/view/common.hpp
+index 818b123..ff3ca54 100644
+--- a/third-party/range-v3/include/range/v3/view/common.hpp
++++ b/third-party/range-v3/include/range/v3/view/common.hpp
+@@ -137,7 +137,7 @@ namespace ranges
+     };
+ 
+ #if RANGES_CXX_DEDUCTION_GUIDES >= RANGES_CXX_DEDUCTION_GUIDES_17
+-    CPP_template(typename Rng)(requires !common_range<Rng>) common_view(Rng &&)
++    CPP_template(typename Rng)(requires (!common_range<Rng>)) common_view(Rng &&)
+         ->common_view<views::all_t<Rng>>;
+ #endif
+ 
+diff --git a/third-party/fmtlib/include/fmt/format-inl.h b/third-party/fmtlib/include/fmt/format-inl.h
+index 56c4d58..8c278cf 100644
+--- a/third-party/fmtlib/include/fmt/format-inl.h
++++ b/third-party/fmtlib/include/fmt/format-inl.h
+@@ -203,7 +203,7 @@ class locale {
+ };
+ 
+ FMT_FUNC size_t internal::count_code_points(u8string_view s) {
+-  const char8_t *data = s.data();
++  const char8_type *data = s.data();
+   int num_code_points = 0;
+   for (size_t i = 0, size = s.size(); i != size; ++i) {
+     if ((data[i].value & 0xc0) != 0x80)
+diff --git a/third-party/fmtlib/include/fmt/format.h b/third-party/fmtlib/include/fmt/format.h
+index 9f522f3..e3d92dc 100644
+--- a/third-party/fmtlib/include/fmt/format.h
++++ b/third-party/fmtlib/include/fmt/format.h
+@@ -432,7 +432,7 @@ void basic_buffer<T>::append(const U *begin, const U *end) {
+ }  // namespace internal
+ 
+ // A UTF-8 code unit type.
+-struct char8_t {
++struct char8_type {
+   char value;
+   FMT_CONSTEXPR explicit operator bool() const FMT_NOEXCEPT {
+     return value != 0;
+@@ -440,19 +440,19 @@ struct char8_t {
+ };
+ 
+ // A UTF-8 string view.
+-class u8string_view : public basic_string_view<char8_t> {
++class u8string_view : public basic_string_view<char8_type> {
+  private:
+-  typedef basic_string_view<char8_t> base;
++  typedef basic_string_view<char8_type> base;
+ 
+  public:
+   using basic_string_view::basic_string_view;
+   using basic_string_view::char_type;
+ 
+   u8string_view(const char *s)
+-    : base(reinterpret_cast<const char8_t*>(s)) {}
++    : base(reinterpret_cast<const char8_type*>(s)) {}
+ 
+   u8string_view(const char *s, size_t count) FMT_NOEXCEPT
+-    : base(reinterpret_cast<const char8_t*>(s), count) {}
++    : base(reinterpret_cast<const char8_type*>(s), count) {}
+ };
+ 
+ #if FMT_USE_USER_DEFINED_LITERALS

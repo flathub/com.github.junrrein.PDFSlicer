@@ -1,0 +1,23 @@
+From e921b8df5d53921c9b2c8ce2dd0c2f46d7051f04 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Tue, 21 Jul 2026 16:25:39 +0200
+Subject: [PATCH] Set prgname to application ID
+
+Using the application ID ensures that Wayland compositors could match the
+window with the application and show the appropriate icon for them.
+---
+ src/application/application.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/application/application.cpp b/src/application/application.cpp
+index c29cda01..01ccaf19 100644
+--- a/src/application/application.cpp
++++ b/src/application/application.cpp
+@@ -32,6 +32,7 @@ Application::Application()
+     : Gtk::Application(config::APPLICATION_ID, Gio::APPLICATION_HANDLES_OPEN)
+ {
+     Glib::set_application_name(config::APPLICATION_NAME);
++    Glib::set_prgname(config::APPLICATION_ID);
+ }
+ 
+ void Application::addActions()
